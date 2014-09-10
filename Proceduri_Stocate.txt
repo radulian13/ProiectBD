@@ -1,0 +1,168 @@
+1.
+CREATE PROCEDURE dbo.spDeleteCamera
+@Room_number int,
+@Typec nvarchar(50),
+@Num_beds int,
+@Num_beds_free int
+
+as
+begin
+SET NOCOUNT ON
+	DELETE FROM Room WHERE [Room_number] = @Room_number AND  [Typec]=@Typec AND [Num_beds]=@Num_beds AND [Num_beds_free]=@Num_beds_free;
+RETURN 0
+end
+
+
+2.
+
+CREATE PROCEDURE dbo.spDeleteEchipament
+@Serial_no nvarchar(50),
+@Descriptionc nvarchar(50),
+@Cost int,
+@Room_number int
+
+as
+begin
+SET NOCOUNT ON
+	DELETE FROM Equipment WHERE [Serial_no] = @Serial_no AND  [Descriptionc]=@Descriptionc AND [Cost]=@Cost AND [Room_number]= @Room_number;
+RETURN 0
+end
+
+3.
+
+CREATE PROCEDURE dbo.spInsertCamera
+@Room_number int,
+@Typec nvarchar(50),
+@Num_beds int,
+@Num_beds_free int
+
+as
+begin
+SET NOCOUNT ON
+
+insert into Room(Room_number,Typec,Num_beds,Num_beds_free) 
+values (@Room_number,@Typec,@Num_beds,@Num_beds_free);
+return(0);
+end
+
+4.
+
+CREATE PROCEDURE dbo.spUpdateCamera
+@Room_number int,
+@Typec nvarchar(50),
+@Num_beds int,
+@Num_beds_free int
+
+as
+begin
+SET NOCOUNT ON
+	UPDATE [Room] SET  [Typec]=@Typec, [Num_beds]=@Num_beds, [Num_beds_free]=@Num_beds_free WHERE
+	Room_number=@Room_number;
+RETURN (0)
+end
+
+5.
+
+CREATE PROCEDURE dbo.spInsertEchipament
+@Serial_no nvarchar(50),
+@Descriptionc nvarchar(50),
+@Cost int,
+@Room_number int
+
+as
+begin
+SET NOCOUNT ON
+
+insert into Equipment(Serial_no,Descriptionc,Cost,Room_number) 
+values (@Serial_no,@Descriptionc,@Cost,@Room_number);
+return(0);
+end
+
+6.
+
+CREATE PROCEDURE dbo.spUpdateEchipament
+@Serial_no nvarchar(50),
+@Descriptionc nvarchar(50),
+@Cost int,
+@Room_number int
+
+as
+begin
+SET NOCOUNT ON
+	UPDATE [Equipment] SET  [Descriptionc]=@Descriptionc, [Cost]=@Cost, [Room_number]=@Room_number WHERE
+	Serial_no=@Serial_no;
+RETURN (0)
+end
+
+7.
+
+CREATE PROCEDURE dbo.spDeletePacient
+@Patient_id int,
+@nume_pacient nvarchar(50),
+@prenume_pacient nvarchar(50),
+@sex nvarchar(50),
+@adresa_pacient nvarchar(50),
+@dob_pacient datetime,
+@age int,
+@Room_number int,
+@diagnostic nvarchar(50),
+@id_personal int
+
+
+AS
+	BEGIN
+	SET NOCOUNT ON
+	DELETE FROM _Pacient WHERE [Patient_id] = @Patient_id AND  [nume_pacient]=@nume_pacient AND [prenume_pacient]=@prenume_pacient and [sex]=@sex and [adresa_pacient]=@adresa_pacient and [dob_pacient]=@dob_pacient and [age]=@age and [Room_number]=@Room_number and [diagnostic]=@diagnostic and [id_personal]=@id_personal;
+RETURN 0
+end
+
+8.
+
+CREATE PROCEDURE dbo.spInsertPacient
+@Patient_id int,
+@nume_pacient nvarchar(50),
+@prenume_pacient nvarchar(50),
+@sex nvarchar(50),
+@adresa_pacient nvarchar(50),
+@dob_pacient datetime,
+@age int,
+@Room_number int,
+@diagnostic nvarchar(50),
+@id_personal int
+
+
+as
+begin
+SET NOCOUNT ON
+
+insert into _Pacient (Patient_id,nume_pacient,prenume_pacient,sex,adresa_pacient,dob_pacient,age,Room_number,diagnostic,id_personal) 
+values (@Patient_id,@nume_pacient,@prenume_pacient,@sex,@adresa_pacient,@dob_pacient,@age,@Room_number,@diagnostic,@id_personal);
+return(0);
+end
+
+9.
+
+CREATE PROCEDURE dbo.spUpdatePacient
+@Patient_id int,
+@nume_pacient nvarchar(50),
+@prenume_pacient nvarchar(50),
+@sex nvarchar(50),
+@adresa_pacient nvarchar(50),
+@dob_pacient datetime,
+@age int,
+@Room_number int,
+@diagnostic nvarchar(50),
+@id_personal int
+
+
+as
+begin
+SET NOCOUNT ON
+
+	UPDATE [_Pacient] SET  [nume_pacient]=@nume_pacient, [prenume_pacient]=@prenume_pacient, [sex]=@sex, [adresa_pacient]=@adresa_pacient, [dob_pacient]=@dob_pacient, [age]=@age, [Room_number]=@Room_number,[diagnostic]=@diagnostic,[id_personal]=@id_personal WHERE
+	Patient_id=@Patient_id;
+RETURN (0)
+end
+
+
+
