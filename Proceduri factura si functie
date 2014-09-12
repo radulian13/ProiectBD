@@ -1,0 +1,59 @@
+1.
+
+CREATE PROCEDURE dbo.spDeleteFactura
+@serial_no nvarchar(50),
+@total float,
+@data_emiterii datetime,
+@Patient_id int
+
+as
+begin
+SET NOCOUNT ON
+	DELETE FROM _Factura WHERE [serial_no] = @serial_no AND  [total]=@total AND [data_emiterii]=@data_emiterii and [Patient_id]=@Patient_id;
+RETURN 0
+end
+
+2.
+
+CREATE PROCEDURE dbo.spInsertFactura
+@serial_no nvarchar(50),
+@total float,
+@data_emiterii datetime,
+@Patient_id int
+
+as
+begin
+SET NOCOUNT ON
+
+insert into _Factura (serial_no,total,data_emiterii,Patient_id) 
+values (@serial_no,@total,@data_emiterii,@Patient_id);
+return(0);
+end
+
+3.
+
+CREATE PROCEDURE dbo.spDeleteFunctie
+@id_functie int,
+@nume_functie nvarchar(50)
+
+as
+begin
+SET NOCOUNT ON
+	DELETE FROM Functii WHERE [id_functie] = @id_functie AND  [nume_functie]=@nume_functie;
+RETURN 0
+end
+
+4.
+
+CREATE PROCEDURE dbo.spInsertFunctie
+@id_functie int,
+@nume_functie nvarchar(50)
+
+as
+begin
+SET NOCOUNT ON
+
+insert into Functii (id_functie,nume_functie) 
+values (@id_functie,@nume_functie);
+return(0);
+end
