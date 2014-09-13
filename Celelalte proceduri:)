@@ -1,0 +1,80 @@
+1.
+
+CREATE PROCEDURE [dbo].[spDeletePersonal]
+	@id_personal int,
+	@id_functie int,
+	@nume nvarchar(50),
+	@prenume nvarchar(50),
+	@adresa nvarchar(50),
+	@id_sectie int,
+	@cnp nvarchar(50)
+AS
+	BEGIN
+	SET NOCOUNT ON
+	DELETE FROM _Personal WHERE [id_personal] = @id_personal AND  [id_functie]=@id_functie AND [nume]=@nume and [prenume]=@prenume and [adresa]=@adresa and [id_sectie]=@id_sectie and [cnp]=@cnp;
+RETURN 0
+end
+
+2.
+
+CREATE PROCEDURE dbo.spInsertPersonal
+@id_personal int,
+@id_functie int,
+@nume nvarchar(50),
+@prenume nvarchar(50),
+@adresa nvarchar(50),
+@id_sectie int,
+@cnp nvarchar(50)
+
+
+as
+begin
+SET NOCOUNT ON
+
+insert into _Personal (id_personal,id_functie,nume,prenume,adresa,id_sectie,cnp) 
+values (@id_personal,@id_functie,@nume,@prenume,@adresa,@id_sectie,@cnp);
+return(0);
+end
+
+3.
+
+CREATE PROCEDURE [dbo].[spUpdatePersonal]
+	@id_personal int,
+	@id_functie int,
+	@nume nvarchar(50),
+	@prenume nvarchar(50),
+	@adresa nvarchar(50),
+	@id_sectie int,
+	@cnp nvarchar(50)
+AS
+	UPDATE [_Personal] SET  [id_functie]=@id_functie, [nume]=@nume, [prenume]=@prenume, [adresa]=@adresa, [id_sectie]=@id_sectie, [cnp]=@cnp WHERE
+	id_personal=@id_personal;
+RETURN (0)
+
+4.
+
+CREATE PROCEDURE dbo.spDeleteSectie
+@id_sectie int,
+@nume_sectie nvarchar(50)
+
+as
+begin
+SET NOCOUNT ON
+	DELETE FROM _Sectie WHERE [id_sectie] = @id_sectie AND  [nume_sectie]=@nume_sectie;
+RETURN 0
+end
+
+5.
+
+CREATE PROCEDURE dbo.spInsertSectie
+@id_sectie int,
+@nume_sectie nvarchar(50)
+
+as
+begin
+SET NOCOUNT ON
+
+insert into _Sectie (id_sectie,nume_sectie) 
+values (@id_sectie,@nume_sectie);
+return(0);
+end
